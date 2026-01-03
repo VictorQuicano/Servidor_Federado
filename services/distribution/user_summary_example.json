@@ -2,11 +2,11 @@
   "total_users": 1000,
   "avg_records_per_user": 10000000,
   "min_user": {
-    "user": "user_id_<id>",
+    "user": "user_<id>",
     "count": 10
   },
   "max_user": {
-    "user": "user_id_<id>",
+    "user": "user_<id>",
     "count": 10000000
   },
   "difference_max_min": 10000000,

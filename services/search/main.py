@@ -21,7 +21,7 @@ MUSIC_4_ALL_ONION = "/mnt/ssd/Carrera/Datasets/Music4all-Onion"
 for_humans = f"{MUSIC_4_ALL}/id_information.csv"
 duration_item = f"{MUSIC_4_ALL}/id_metadata.csv"
 history_count = f"{MUSIC_4_ALL_ONION}/userid_trackid_count.tsv.bz2"
-embeddings_compress_path = f"{MUSIC_4_ALL_ONION}/music_4_all_compress.csv"
+embeddings_compress_path = f"{MUSIC_4_ALL_ONION}/music_4_all_compress_64.csv"
 
 # Models Pydantic para validación
 class SimilarityRequest(BaseModel):
