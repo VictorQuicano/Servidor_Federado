@@ -13,15 +13,31 @@ import json
 import argparse
 import sys
 
-# Setup paths (mantén tus rutas existentes)
-MUSIC_4_ALL = "/mnt/ssd/Carrera/Datasets/music4all"
-MUSIC_4_ALL_ONION = "/mnt/ssd/Carrera/Datasets/Music4all-Onion"
+from google.cloud import storage
+
+# Setup paths
+BUCKET_NAME = "recommender-system-datasets-tesis-experiment"
+BUCKET_PREFIX = "music_dataset"
 
 # Load Data
-for_humans = f"{MUSIC_4_ALL}/id_information.csv"
-duration_item = f"{MUSIC_4_ALL}/id_metadata.csv"
-history_count = f"{MUSIC_4_ALL_ONION}/userid_trackid_count.tsv.bz2"
-embeddings_compress_path = f"{MUSIC_4_ALL_ONION}/music_4_all_compress_64.csv"
+for_humans = "id_information.csv"
+duration_item = "id_metadata.csv"
+history_count = "userid_trackid_count.tsv.bz2"
+embeddings_compress_path = "music_4_all_compress_64.csv"
+
+# Download from GCP if missing
+_files_to_check = {
+    for_humans: f"{BUCKET_PREFIX}/id_information.csv",
+    duration_item: f"{BUCKET_PREFIX}/id_metadata.csv",
+    history_count: f"{BUCKET_PREFIX}/userid_trackid_count.tsv.bz2",
+    embeddings_compress_path: f"{BUCKET_PREFIX}/music_4_all_compress_64.csv"
+}
+
+if any(not os.path.exists(f) for f in _files_to_check):
+    _bucket = storage.Client().bucket(BUCKET_NAME)
+    for _local, _remote in _files_to_check.items():
+        if not os.path.exists(_local):
+            _bucket.blob(_remote).download_to_filename(_local)
 
 # Models Pydantic para validación
 class SimilarityRequest(BaseModel):
