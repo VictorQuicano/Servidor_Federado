@@ -13,31 +13,14 @@ import json
 import argparse
 import sys
 
-from google.cloud import storage
-
-# Setup paths
-BUCKET_NAME = "recommender-system-datasets-tesis-experiment"
-BUCKET_PREFIX = "music_dataset"
+# Setup paths (mantén tus rutas existentes)
+FILE_PATH = "/mnt/shared-storage/data/music_dataset"
 
 # Load Data
-for_humans = "id_information.csv"
-duration_item = "id_metadata.csv"
-history_count = "userid_trackid_count.tsv.bz2"
-embeddings_compress_path = "music_4_all_compress_64.csv"
-
-# Download from GCP if missing
-_files_to_check = {
-    for_humans: f"{BUCKET_PREFIX}/id_information.csv",
-    duration_item: f"{BUCKET_PREFIX}/id_metadata.csv",
-    history_count: f"{BUCKET_PREFIX}/userid_trackid_count.tsv.bz2",
-    embeddings_compress_path: f"{BUCKET_PREFIX}/music_4_all_compress_64.csv"
-}
-
-if any(not os.path.exists(f) for f in _files_to_check):
-    _bucket = storage.Client().bucket(BUCKET_NAME)
-    for _local, _remote in _files_to_check.items():
-        if not os.path.exists(_local):
-            _bucket.blob(_remote).download_to_filename(_local)
+for_humans = f"{FILE_PATH}/id_information.csv"
+duration_item = f"{FILE_PATH}/id_metadata.csv"
+history_count = f"{FILE_PATH}/userid_trackid_count.tsv.bz2"
+embeddings_compress_path = f"{FILE_PATH}/music_4_all_compress_64.csv"
 
 # Models Pydantic para validación
 class SimilarityRequest(BaseModel):
