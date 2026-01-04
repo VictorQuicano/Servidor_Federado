@@ -1,0 +1,68 @@
+---
+- name: Desplegar Cliente Federado
+  hosts: clientes
+  gather_facts: yes
+  vars:
+    repo_url: "https://github.com/VictorQuicano/Cliente_Federado.git"
+    dest_path: "/home/{{ ansible_user }}/cliente_federado"
+    python_version: "3.14.2"
+    conda_env_name: "federated_env"
+    # Adjust conda path if necessary, often /opt/conda or ~/miniconda3
+    conda_path: "/opt/conda" 
+
+  tasks:
+    - name: Instalar Git
+      package:
+        name: git
+        state: present
+      become: yes
+
+    - name: Clonar el repositorio
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ dest_path }}"
+        version: main
+        force: yes
+
+    - name: Comprobar si Conda está instalado
+      stat:
+        path: "{{ conda_path }}/bin/conda"
+      register: conda_bin
+
+    - name: Descargar instalador de Miniconda
+      get_url:
+        url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        dest: /tmp/miniconda.sh
+        mode: '0755'
+      when: not conda_bin.stat.exists
+
+    - name: Instalar Miniconda
+      command: /tmp/miniconda.sh -b -p {{ conda_path }}
+      args:
+        creates: "{{ conda_path }}"
+      become: yes
+      when: not conda_bin.stat.exists
+
+
+    - name: Crear entorno Conda con Python {{ python_version }}
+      command: "{{ conda_path }}/bin/conda create -n {{ conda_env_name }} python={{ python_version }} -y"
+      args:
+        creates: "{{ conda_path }}/envs/{{ conda_env_name }}"
+      register: conda_create
+
+    - name: Instalar requirements.txt en el entorno Conda
+      pip:
+        requirements: "{{ dest_path }}/requirements.txt"
+        virtualenv: "{{ conda_path }}/envs/{{ conda_env_name }}"
+        # Alternative if using pip inside conda directly
+        # executable: "{{ conda_path }}/envs/{{ conda_env_name }}/bin/pip"
+      
+    # Opcional: Instalar flwr y google-cloud-storage explícitamente si no están en requirements
+    # pero asumimos que están allí.
+
+    - name: Verificar versión de Python
+      command: "{{ conda_path }}/envs/{{ conda_env_name }}/bin/python --version"
+      register: python_version_output
+
+    - debug:
+        msg: "Python version installed: {{ python_version_output.stdout }}"
