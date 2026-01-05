@@ -12,7 +12,7 @@ USER_SUMMARY_PATH = os.path.join(BASE_DIR, "user_summary.json")
 distro_manager = UserDistributionManager(
     user_summary_path=USER_SUMMARY_PATH,
     n_grupos=5,
-    n_rondas=1
+    n_rondas=3
 )
 
 @app.get("/get_user")
