@@ -1,12 +1,20 @@
 #!/bin/bash
-# Script para iniciar el servicio de monitoreo
-# Puerto 8083
 
-if ! command -v uvicorn &> /dev/null
-then
-    echo "uvicorn no encontrado. Instalando..."
-    pip install uvicorn fastapi sqlalchemy
-fi
+APP="main:app"
+HOST="0.0.0.0"
+PORT="8083"
+LOG_FILE="server.log"
+PID_FILE="server.pid"
 
-echo "Iniciando servicio de monitoreo en http://0.0.0.0:8083"
-uvicorn main:app --host 0.0.0.0 --port 8083 --reload
+echo "Iniciando servidor FastAPI en $HOST:$PORT..."
+
+# Ejecutar en segundo plano con nohup
+nohup uvicorn $APP --host $HOST --port $PORT > $LOG_FILE 2>&1 &
+
+# Guardar el PID (ID del proceso)
+echo $! > $PID_FILE
+
+echo "Servidor iniciado en segundo plano"
+echo "PID: $(cat $PID_FILE)"
+echo "Logs: $LOG_FILE"
+echo "Para detener: ./stop_server.sh"
