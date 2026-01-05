@@ -1,0 +1,16 @@
+[
+    {
+        "round": 1,
+        "avg_val_reward": 0.89814017156924,
+        "avg_train_loss": 0.00582428657868877,
+        "avg_actor_loss": -1.1638109998106958,
+        "weight_norm": 4.11305046081543
+    },
+    {
+        "round": 2,
+        "avg_val_reward": 0.8896203287775057,
+        "avg_train_loss": 0.0056010063287103545,
+        "avg_actor_loss": -1.3829269537329674,
+        "weight_norm": 4.15362024307251
+    }
+]

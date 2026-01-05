@@ -8,12 +8,48 @@ import torch
 import json
 import os
 
+import os
+import requests
+import logging
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+MONITORING_API = "http://localhost:8083"
+
+class MonitoringClient:
+    def __init__(self, api_url=MONITORING_API):
+        self.api_url = api_url
+        
+    def start_session(self, total_rounds: int) -> int:
+        try:
+            resp = requests.post(f"{self.api_url}/training/start", json={"total_rounds": total_rounds})
+            if resp.status_code == 200:
+                return resp.json()["session_id"]
+        except Exception as e:
+            logging.error(f"Error iniciando sesión de monitoreo: {e}")
+        return -1
+
+    def end_session(self, session_id: int):
+        try:
+            requests.post(f"{self.api_url}/training/{session_id}/end")
+        except:
+            pass
+
+    def log_global_metrics(self, session_id: int, round_num: int, metrics: Dict):
+        try:
+            requests.post(
+                f"{self.api_url}/training/{session_id}/round/global",
+                json={"round_number": round_num, "metrics": metrics}
+            )
+        except Exception as e:
+            logging.error(f"Error enviando métricas globales: {e}")
+
 class DDPGFedAvg(FedAvg):
-    def __init__(self, save_path: str = "federated_metrics.json", *args, **kwargs):
+    def __init__(self, session_id: int = -1, save_path: str = "federated_metrics.json", *args, **kwargs):
         self.save_path = save_path
+        self.session_id = session_id
         self.metrics_history = []
+        self.monitor = MonitoringClient()
         super().__init__(*args, **kwargs)
     
     def aggregate_fit(self, server_round, results, failures):
@@ -66,6 +102,14 @@ class DDPGFedAvg(FedAvg):
                     "weight_norm": float(avg_norm) if 'avg_norm' in locals() else 0.0
                 })
                 self._save_metrics()
+                
+                # Enviar al sistema de monitoreo
+                if self.session_id != -1:
+                    self.monitor.log_global_metrics(
+                        self.session_id, 
+                        server_round, 
+                        aggregated_metrics
+                    )
         
         return aggregated_parameters, aggregated_metrics
 
@@ -82,6 +126,7 @@ class DDPGFedAvg(FedAvg):
         # Configurar parámetros para esta ronda
         config = {
             "server_round": server_round,
+            "session_id": self.session_id,  # Pasar ID de sesión a clientes
             "local_epochs": 5,
             "epsilon_start": max(0.9 * (0.95 ** (server_round - 1)), 0.1),
             "epsilon_end": 0.1,
@@ -108,7 +153,8 @@ class DDPGFedAvg(FedAvg):
     def configure_evaluate(self, server_round, parameters, client_manager):
         """Configurar evaluación para cada cliente"""
         config = {
-            "server_round": server_round
+            "server_round": server_round,
+            "session_id": self.session_id
         }
         
         # Obtener clientes para evaluación
@@ -193,8 +239,15 @@ def fit_metrics_aggregation_fn(results):
 
 def main():
     """Función principal del servidor - Versión actualizada"""
-    # Definir estrategia
+    
+    # Iniciar sesión de monitoreo
+    monitor = MonitoringClient()
+    session_id = monitor.start_session(total_rounds=5)
+    logging.info(f"Sesión de monitoreo iniciada: {session_id}")
+    
+    # Definir estrategia con session_id
     strategy = DDPGFedAvg(
+        session_id=session_id,
         fraction_fit=0.5,  # Fracción de clientes para entrenamiento
         fraction_evaluate=0.5,  # Fracción de clientes para evaluación
         min_fit_clients=2,  # Mínimo de clientes para entrenamiento
@@ -206,7 +259,7 @@ def main():
     )
     
     # Configurar servidor
-    server_config = fl.server.ServerConfig(num_rounds=10)
+    server_config = fl.server.ServerConfig(num_rounds=2)
     
     # Usar el método recomendado para versiones nuevas
     # Opción 1: Usar el método nuevo recomendado
@@ -226,6 +279,8 @@ def main():
             config=server_config,
             strategy=strategy
         )
+    monitor.end_session(session_id)
+    logging.info(f" Sesión de monitoreo finalizada: {session_id}")
 
 if __name__ == "__main__":
     main()
