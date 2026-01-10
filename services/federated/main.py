@@ -259,7 +259,7 @@ def main():
     )
     
     # Configurar servidor
-    server_config = fl.server.ServerConfig(num_rounds=2)
+    server_config = fl.server.ServerConfig(num_rounds=10)
     
     # Usar el método recomendado para versiones nuevas
     # Opción 1: Usar el método nuevo recomendado
