@@ -14,7 +14,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-MONITORING_API = "http://localhost:8083"
+MONITORING_API = "http://35.209.90.18:8083"
 
 class MonitoringClient:
     def __init__(self, api_url=MONITORING_API):
@@ -250,16 +250,16 @@ def main():
         session_id=session_id,
         fraction_fit=0.5,  # Fracción de clientes para entrenamiento
         fraction_evaluate=0.5,  # Fracción de clientes para evaluación
-        min_fit_clients=2,  # Mínimo de clientes para entrenamiento
-        min_evaluate_clients=2,  # Mínimo de clientes para evaluación
-        min_available_clients=2,  # Mínimo de clientes disponibles
+        min_fit_clients=6,  # Mínimo de clientes para entrenamiento
+        min_evaluate_clients=6,  # Mínimo de clientes para evaluación
+        min_available_clients=6,  # Mínimo de clientes disponibles
         initial_parameters=get_initial_parameters(),
         evaluate_metrics_aggregation_fn=evaluate_metrics_aggregation_fn,
         fit_metrics_aggregation_fn=fit_metrics_aggregation_fn,
     )
     
     # Configurar servidor
-    server_config = fl.server.ServerConfig(num_rounds=10)
+    server_config = fl.server.ServerConfig(num_rounds=3)
     
     # Usar el método recomendado para versiones nuevas
     # Opción 1: Usar el método nuevo recomendado

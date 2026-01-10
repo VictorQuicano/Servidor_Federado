@@ -1,9 +1,23 @@
 [
     {
+        "round": 1,
+        "avg_val_reward": 0.722339162841723,
+        "avg_train_loss": 0.009895636175875551,
+        "avg_actor_loss": -1.0391821854710577,
+        "weight_norm": 4.455216407775879
+    },
+    {
         "round": 2,
-        "avg_val_reward": 0.8589933043597211,
-        "avg_train_loss": 0.008495517189148812,
-        "avg_actor_loss": -1.0794683358967303,
-        "weight_norm": 4.816643714904785
+        "avg_val_reward": 0.7058689882518898,
+        "avg_train_loss": 0.011775195591889012,
+        "avg_actor_loss": -1.2540165063242117,
+        "weight_norm": 4.689222812652588
+    },
+    {
+        "round": 3,
+        "avg_val_reward": 0.6895981070685907,
+        "avg_train_loss": 0.012064440981193912,
+        "avg_actor_loss": -1.478812554419041,
+        "weight_norm": 4.827795028686523
     }
 ]
