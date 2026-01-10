@@ -1,0 +1,117 @@
+INFO:     Started server process [72850]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8083 (Press CTRL+C to quit)
+INFO:     127.0.0.1:35276 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35276 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55738 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55754 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60926 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60928 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:MonitoringService:Nueva sesión de entrenamiento iniciada: ID 11
+INFO:     127.0.0.1:36782 - "POST /training/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57984 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57992 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58002 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58018 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48864 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48866 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52880 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52888 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52896 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52912 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52928 - "POST /training/11/round/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52934 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52944 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52954 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52960 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52962 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52972 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52978 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52984 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51610 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51626 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51632 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51634 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51648 - "POST /training/11/round/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51654 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51670 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51680 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51690 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51694 - "POST /training/11/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51696 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:MonitoringService:Sesión 11 completada
+INFO:     127.0.0.1:51708 - "POST /training/11/end HTTP/1.1" 200 OK
+INFO:MonitoringService:Nueva sesión de entrenamiento iniciada: ID 12
+INFO:     127.0.0.1:49168 - "POST /training/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49176 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49186 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34028 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34038 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34046 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34050 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41172 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41180 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41184 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41190 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41198 - "POST /training/12/round/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41200 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41212 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41220 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41236 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41234 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41250 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41260 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:41266 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48942 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48954 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48958 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48962 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48966 - "POST /training/12/round/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48976 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48988 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48996 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48998 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49014 - "POST /training/12/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49020 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:MonitoringService:Sesión 12 completada
+INFO:     127.0.0.1:49022 - "POST /training/12/end HTTP/1.1" 200 OK
+INFO:MonitoringService:Nueva sesión de entrenamiento iniciada: ID 13
+INFO:     127.0.0.1:50722 - "POST /training/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59938 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59942 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59948 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59950 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54344 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54346 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47568 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47584 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47596 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47600 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35716 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35728 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35742 - "POST /training/13/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35754 - "POST /training/13/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35770 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35780 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35796 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35810 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37288 - "POST /training/13/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37302 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37304 - "POST /training/13/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37312 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37326 - "POST /training/13/round/global HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37330 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37336 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37348 - "POST /training/13/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37364 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37376 - "POST /training/13/client/metrics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37392 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:MonitoringService:Sesión 13 completada
+INFO:     127.0.0.1:37398 - "POST /training/13/end HTTP/1.1" 200 OK
+INFO:MonitoringService:Nueva sesión de entrenamiento iniciada: ID 14
+INFO:     127.0.0.1:39378 - "POST /training/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45720 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45732 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56802 - "POST /client/heartbeat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56812 - "POST /client/heartbeat HTTP/1.1" 200 OK

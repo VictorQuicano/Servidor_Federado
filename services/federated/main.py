@@ -242,7 +242,7 @@ def main():
     
     # Iniciar sesión de monitoreo
     monitor = MonitoringClient()
-    session_id = monitor.start_session(total_rounds=5)
+    session_id = monitor.start_session(total_rounds=10)
     logging.info(f"Sesión de monitoreo iniciada: {session_id}")
     
     # Definir estrategia con session_id

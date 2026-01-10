@@ -31,3 +31,4 @@ else
     
     # Buscar y mostrar procesos relacionados
     ps aux | grep uvicorn | grep -v grep
+fi

@@ -1,0 +1,20 @@
+INFO:     Started server process [72844]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8081 (Press CTRL+C to quit)
+INFO:     127.0.0.1:33976 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33976 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:43972 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60784 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58092 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58108 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43244 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47350 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51168 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51170 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51956 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51972 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43832 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43842 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34212 - "GET /get_user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38260 - "GET /get_user HTTP/1.1" 200 OK
